@@ -19,7 +19,16 @@ int numLength(int num) {
 }
 
 int isArmstrong(int num) {
-   return True;
+    int numLen = numLength(num);        //Calculate the length of the number
+    int temp = num;     //Saving the original number
+    int result = 0;
+    while (num > 0) {
+        result += pow(num % 10, numLen);        //The Armstrong rule-> each_digit^number_length
+        num = num / 10;         //Removing the digit we already calculated (the last digit)
+    }
+    if(result == temp)          //Checking if the original number equals to the calculation we did
+        return True;
+    return False;
 }
 
 int isPalindrome(int num) {
@@ -44,6 +53,6 @@ int isPalindrome(int num) {
 int main() {
 
     printf("%d\n", isPalindrome(101020101));
-
+    printf("%d\n", isArmstrong(372));
     return 1;
 }
