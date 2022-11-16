@@ -4,11 +4,6 @@
 #include "NumClass.h"
 #include <math.h>
 
-#define True 1
-#define False 0
-
-/* Factorial function (n! = n * (n-1) * (n-2) * ... * 2 * 1)
- */
 int fact(int num) {
 
     int result = 1;
@@ -23,15 +18,15 @@ int isPrime(int num) {
     if (num == 1 || num == 2) {
         return True;
     }
-    if (num % 2 == 0) {
+    if (num % 2 == 0) {         //Checking if number divisible by 2
         return False;
     }
-    for (int i = 3; i <= sqrt(num); ++i) {
-        if (num % i == 0) {
+    for (int i = 3; i <= sqrt(num); ++i) {      //Looping on all number in range [3,sqrt(number)]
+        if (num % i == 0) {         //Checking if the number is divisible by any number of this range then will return False
             return False;
         }
     }
-    return True;
+    return True;        //Otherwise, return True
 }
 
 int isStrong(int num) {
