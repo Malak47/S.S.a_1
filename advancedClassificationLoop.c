@@ -3,8 +3,6 @@
 //
 #include "NumClass.h"
 #include <math.h>
-#include <stdlib.h>
-#include <stdio.h>
 
 #define True 1
 #define False 0
@@ -23,10 +21,10 @@ int isArmstrong(int num) {
     int temp = num;     //Saving the original number
     int result = 0;
     while (num > 0) {
-        result += pow(num % 10, numLen);        //The Armstrong rule-> each_digit^number_length
+        result += (int) pow(num % 10, numLen);        //Armstrong Number Rule-> each_digit^number_length
         num = num / 10;         //Removing the digit we already calculated (the last digit)
     }
-    if(result == temp)          //Checking if the original number equals to the calculation we did
+    if (result == temp)          //Checking if the original number equals to the calculation we did
         return True;
     return False;
 }
@@ -39,20 +37,13 @@ int isPalindrome(int num) {
     }
     while (num > 0) {
         smalldig = num % 10;        //Catching the last digit
-        bigdig = num / pow(10, numLen - 1);     //Catching the first digit
+        bigdig = num / (int) pow(10, numLen - 1);     //Catching the first digit
         if (smalldig != bigdig) {       //Checking the first digit is not equal to the last digit then return false
             return False;
         }
-        num -= smalldig * pow(10, numLen - 1);      //Removing the first digit
+        num -= smalldig * (int) pow(10, numLen - 1);      //Removing the first digit
         num = num / 10;         //Removing the last digit
         numLen = numLen - 2;    //Updating number's length (removing the first and the last digit)
     }
     return True;
-}
-
-int main() {
-
-    printf("%d\n", isPalindrome(101020101));
-    printf("%d\n", isArmstrong(372));
-    return 1;
 }
